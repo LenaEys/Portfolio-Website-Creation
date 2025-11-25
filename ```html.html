@@ -1,0 +1,287 @@
+```index
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name — web developer / designer" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="logo">YourName</a>
+      <button id="navToggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        ☰
+      </button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Hi — I’m Your Name.</h1>
+          <p>I build accessible, performant websites and delightful interfaces.</p>
+          <p><a class="btn" href="#projects">View my work</a></p>
+        </div>
+        <div class="hero-img" aria-hidden="true">
+          <!-- placeholder for portrait or illustration -->
+          <div class="portrait">Photo</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects container">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <!-- Repeat these cards for your projects -->
+        <article class="card">
+          <img src="https://via.placeholder.com/800x450" alt="Screenshot of project A">
+          <div class="card-body">
+            <h3>Project A</h3>
+            <p>Short description of the project and technologies used.</p>
+            <p><a class="link" href="#">View project</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/800x450" alt="Screenshot of project B">
+          <div class="card-body">
+            <h3>Project B</h3>
+            <p>Short description of the project and technologies used.</p>
+            <p><a class="link" href="#">View project</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://via.placeholder.com/800x450" alt="Screenshot of project C">
+          <div class="card-body">
+            <h3>Project C</h3>
+            <p>Short description of the project and technologies used.</p>
+            <p><a class="link" href="#">View project</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div>
+          <h3>Who I am</h3>
+          <p>Write a short bio. Mention what you do, tools you use, and what kind of work you enjoy.</p>
+        </div>
+        <div>
+          <h3>Skills</h3>
+          <ul class="skills">
+            <li>HTML &amp; CSS</li>
+            <li>JavaScript (ES6+)</li>
+            <li>React / Vue</li>
+            <li>UX &amp; Accessibility</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h2>Contact</h2>
+      <p>Interested in working together? Send a message.</p>
+      <form id="contactForm" class="contact-form">
+        <label>
+          <span class="label-text">Name</span>
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          <span class="label-text">Email</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span class="label-text">Message</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn">Send</button>
+        <p id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Your Name — Built with ❤️</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+## 3) `styles.css`
+
+Paste the following into `styles.css` (detailed comments inline):
+
+```css
+/* Reset / base */
+*{box-sizing:border-box}
+:root{
+  --max-width:1100px;
+  --accent:#1f6feb;
+  --bg:#ffffff;
+  --text:#0b0b0b;
+}
+html,body{height:100%}
+body{
+  margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 1rem}
+
+/* Header */
+.site-header{border-bottom:1px solid rgba(0,0,0,.06);background:white}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.logo{text-decoration:none;font-weight:700;font-size:1.1rem;color:var(--text)}
+.nav-toggle{display:none;background:none;border:0;font-size:1.5rem}
+.primary-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+.primary-nav a{text-decoration:none;color:var(--text)}
+
+/* Hero */
+.hero{padding:3rem 0}
+.hero-inner{display:flex;gap:2rem;align-items:center}
+.hero-text h1{margin:0 0 .5rem;font-size:2rem}
+.portrait{width:220px;height:220px;border-radius:12px;background:#eee;display:flex;align-items:center;justify-content:center}
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;background:var(--accent);color:white;text-decoration:none}
+
+/* Projects grid */
+.projects h2{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{background:white;border:1px solid rgba(0,0,0,.06);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;height:auto;display:block}
+.card-body{padding:1rem}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.skills{list-style:none;padding:0;margin:0}
+
+/* Contact */
+.contact-form{display:grid;gap:.75rem;max-width:600px}
+.contact-form label{display:block}
+.contact-form input,.contact-form textarea{width:100%;padding:.6rem;border:1px solid #ddd;border-radius:8px}
+
+/* Footer */
+.site-footer{padding:2rem 0;text-align:center;color:#666}
+
+/* Accessibility helpers */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Responsive adjustments */
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{flex-direction:column-reverse;text-align:center}
+  .portrait{width:160px;height:160px}
+}
+
+@media (max-width:600px){
+  .nav-toggle{display:block}
+  .primary-nav{display:none}
+  .primary-nav[aria-hidden="false"]{display:block}
+  .primary-nav ul{flex-direction:column;gap:.5rem}
+
+  .grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .hero-text h1{font-size:1.6rem}
+  .header-inner{gap:1rem}
+}
+```
+
+## 4) `script.js`
+
+Paste the following into `script.js`:
+
+```javascript
+// Small script for nav toggle, footer year, and simple contact form handling
+const navToggle = document.getElementById('navToggle');
+const primaryNav = document.getElementById('primary-nav');
+navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', String(!expanded));
+  if (!expanded) {
+    primaryNav.setAttribute('aria-hidden', 'false');
+  } else {
+    primaryNav.setAttribute('aria-hidden', 'true');
+  }
+});
+
+// Set footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Contact form: example client-side handling (replace with real endpoint when ready)
+const form = document.getElementById('contactForm');
+const status = document.getElementById('formStatus');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  // Minimal validation (browser already handles required)
+  status.textContent = 'Sending...';
+  // Simulation of async send
+  setTimeout(() => {
+    status.textContent = 'Thanks — your message has been received! (This is a demo)';
+    form.reset();
+  }, 800);
+});
+```
+
+---
+
+## 5) How the responsiveness works (step-by-step explanation)
+
+1. The page uses a flexible layout (`flex` in the hero and `grid` for projects) that adapts to container width.
+2. `@media` queries at `900px` and `600px` change layout: grids reduce columns and the header becomes mobile-friendly.
+3. The viewport meta tag (`width=device-width,initial-scale=1`) ensures the mobile device uses device width.
+4. Images are fluid (width:100%) so they scale down on smaller screens.
+
+## 6) Accessibility and performance tips
+
+- Include `alt` text for images (done in starter).
+- Use semantic elements: `<header>`, `<main>`, `<section>`, `<article>`, `<footer>`.
+- Keep interactive elements reachable by keyboard (nav toggle is a button).
+- Optimize images (export sensible sizes and use `srcset` later).
+- Minify CSS and JS for production.
+
+## 7) Replace placeholders with real content
+
+- Replace `Your Name`, portraits, and project screenshots.
+- Link each project card to a project page or GitHub repo.
+
+## 8) Deploying quickly
+
+- Initialize a git repo in the `portfolio` folder and push to GitHub.
+- Use GitHub Pages (branch `main` or `gh-pages`) OR drag the folder to Netlify/Vercel for one-click deploy.
+
+---
+
+## 9) Next improvements you might add (ordered)
+
+1. Add `srcset` and compressed images for different screen sizes.
+2. Add keyboard focus styles for accessibility.
+3. Add lightweight animations with `prefers-reduced-motion` in CSS.
+4. Convert projects section to load items from a JSON file (easier maintenance).
+5. Add a CMS or form endpoint (Formspree, Netlify Forms, or your own server) to handle messages.
+
+---
+
+If you want, I can:
+- Generate a ready-to-deploy ZIP of this project.
+- Convert this into a React single-file component.
+- Add a dark mode variant and toggle.
+
+Tell me which option and I’ll add it to the project.
